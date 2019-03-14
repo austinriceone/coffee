@@ -1,9 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Setup
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-item>
+        <ion-input [(ngModel)]="grounds" [placeholder]="'Coffee Grounds (g)'"></ion-input>
+    </ion-item>
+    <!--<ion-select [placeholder]="'Ratio'">text-->
+    <!--<ion-select-option>1/17</ion-select-option>-->
+    <!--<ion-select-option>1/16</ion-select-option>-->
+    <!--<ion-select-option>1/15</ion-select-option>-->
+    <!--<ion-select-option>1/14</ion-select-option>-->
+    <!--<ion-select-option>1/13</ion-select-option>-->
+    <!--<ion-select-option>1/12</ion-select-option>-->
+    <!--</ion-select>-->
+    <ion-item>
+        <ion-range min="12" max="18" snaps="true" step="1" color="secondary" [(ngModel)]="ratio">
+            <ion-label slot="start">1/12</ion-label>
+            <ion-label slot="end">1/18</ion-label>
+        </ion-range>
+    </ion-item>
+    <ion-item>1/{{ratio}}</ion-item>
+    <ion-item>
+        <ion-grid *ngIf="grounds && ratio">
+            <ion-row>
+                <ion-col>Bloom</ion-col>
+                <ion-col>{{grounds * 2}}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>1st Pour</ion-col>
+                <ion-col>{{(grounds * (ratio)) / 4}}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>2nd Pour</ion-col>
+                <ion-col>{{((grounds * (ratio))/4) * 2}}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>3rd Pour</ion-col>
+                <ion-col>{{((grounds * (ratio))/4) * 1.5}}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>4th Pour</ion-col>
+                <ion-col>{{(grounds * (ratio))}}</ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+
+</ion-content>
