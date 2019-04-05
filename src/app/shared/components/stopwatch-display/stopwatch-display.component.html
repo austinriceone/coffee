@@ -1,0 +1,9 @@
+<ion-grid>
+    <ion-row>
+        <ion-label class="timer-display">{{timeElapsed}}</ion-label>
+    </ion-row>
+    <ion-row>
+        <ion-button (click)="runningSwitch()">{{running ? 'Pause' : 'Start'}}</ion-button>
+        <ion-button (click)="reset()">Reset</ion-button>
+    </ion-row>
+</ion-grid>
